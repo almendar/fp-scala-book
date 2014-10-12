@@ -11,7 +11,8 @@ lib_managed/
 src_managed/
 project/boot/
 project/plugins/project/
-
+*.sublime-project
+*.sublime-workspace
 # Scala-IDE specific
 .scala_dependencies
 .worksheet
