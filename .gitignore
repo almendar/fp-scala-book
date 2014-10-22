@@ -26,3 +26,6 @@ project/plugins/project/
 
 # IntelliJ IDEA
 .idea/
+
+# Other files, like binaries
+*.pdf
