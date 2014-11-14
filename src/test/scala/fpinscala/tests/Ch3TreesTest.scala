@@ -1,7 +1,7 @@
-package fpinscala.tests.datastructures
+package fpinscala.tests
 
+import fpinscala.{Branch, Leaf}
 import org.scalatest.FlatSpec
-import fpinscala.datastructures.tree.{Tree,Branch,Leaf}
 
 class Ch3TreesTest extends FlatSpec {
 

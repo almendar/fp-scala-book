@@ -1,4 +1,4 @@
-package fpinscala.functiontransformation
+package fpinscala
 
 /**
  * Created by tomaszk on 10/7/14.

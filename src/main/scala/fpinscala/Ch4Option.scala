@@ -1,4 +1,4 @@
-package fpinscala.datastructures.option
+package fpinscala
 
 //import fpinscala.datastructures.list._
 

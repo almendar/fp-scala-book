@@ -1,5 +1,4 @@
-package fpinscala.functionalstate
-
+package fpinscala
 
 case class ComplexNumber(x1:Double,x2:Double)
 
@@ -79,7 +78,7 @@ object RNG {
   def seedFromTime = simple(System.currentTimeMillis())
 }
 
-import RNG._
+import fpinscala.RNG._
 
 object RNGApp extends App {
   println(simplePair(seedFromTime)._1)

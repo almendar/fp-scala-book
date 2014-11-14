@@ -1,8 +1,4 @@
-package fpinscala.functionalstate
-
-
-
-
+package fpinscala
 
 object ParticleModule extends App
 {
@@ -100,7 +96,7 @@ case class State[S,+A](run: S => (A,S))
 
 }
 
-import State._
+import fpinscala.State._
 
 sealed trait Input
 case object Coin extends Input

@@ -1,9 +1,10 @@
-package fpinscala.functionalparallelism
+package fpinscala
+
+import java.util.concurrent.{Callable, TimeUnit}
+
+import fpinscala.Par.Par
 
 import scala.collection.immutable.IndexedSeq
-import java.util.concurrent.{Callable,TimeUnit}
-
-import Par.Par
 
 object Util {
   def sum(as : IndexedSeq[Int]) : Par[Int] =

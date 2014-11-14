@@ -1,4 +1,4 @@
-package fpinscala.datastructures.tree
+package fpinscala
 
 sealed trait Tree[+A] {
   def fold[B](f: (A) => B)(g : (B,B) => B) : B = {
