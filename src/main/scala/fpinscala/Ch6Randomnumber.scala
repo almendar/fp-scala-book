@@ -31,8 +31,10 @@ object RNG {
   def double : Rand[Double] = map(_.nextInt)(a => a.toDouble / Int.MaxValue)
 
   def int : Rand[Int] = _.nextInt
+
+  def boolean : Rand[Boolean] = map(int)(a => a%2==0)
   
-  
+  def nonNegativeInt : Rand[Int] = map(_.nextInt)(x => if(x<0) -1*x else x)
   
   def complexNumber : Rand[ComplexNumber] = map(doubldobule)((x) => ComplexNumber(x._1,x._2))
 
@@ -75,7 +77,7 @@ object RNG {
   
 
   def ints(count: Int): Rand[List[Int]] = RNG.sequence(List.fill(count)(int))
-  def seedFromTime = simple(System.currentTimeMillis())
+  def seedFromTime : RNG = simple(System.currentTimeMillis())
 }
 
 import fpinscala.RNG._
