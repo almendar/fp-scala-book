@@ -54,6 +54,6 @@ object OptionA {
 			else Option(el.get :: acc.get)
 		}
 	}
-	def traverse[A, B](a: List[A])(f: A => Option[B]): Option[List[B]] = ???
+	def traverse[A, B](a: List[A])(f: A => Option[B]): Option[List[B]] = sequence(a.map(f))
 	
 }

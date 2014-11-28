@@ -7,6 +7,7 @@ sealed trait ListA[+A] {
 		case 0 => this
 		case n1 => tail.drop(n-1)
 	}
+
 	def dropWhile(f: A => Boolean): ListA[A] = if( f(head) ) tail.dropWhile(f) else ConsA(head,tail)
 	def setHead[B >: A](b:B) : ListA[B] = ConsA(b,tail)
 	def init : ListA[A] =  {
@@ -16,6 +17,12 @@ sealed trait ListA[+A] {
 		}
 	}
 
+	def ::[AA >: A](other : ListA[AA]) : ListA[AA] = {
+		other match {
+			case lst @ ConsA(head,tail) => tail :: ConsA(head,this)
+			case emptyList @ NilA => this
+		}
+	}
 }
 
 case object NilA extends ListA[Nothing] {
@@ -25,6 +32,9 @@ case object NilA extends ListA[Nothing] {
 	override def drop(n:Int) = NilA
 	override def init = NilA
 	override def dropWhile(f: Nothing => Boolean) = NilA
+	override def ::[A](other : ListA[A]) : ListA[A] = {
+		other
+	}
 
 }
 
@@ -38,6 +48,15 @@ object ListA {
 			case NilA => 0
 			case ConsA(x,xs) => x + sum(xs)
 		}
+
+
+	def fill[A](n:Int)(a : => A) : ListA[A] = {
+		def go(m:Int,acc:ListA[A]) : ListA[A] = m match {
+			case 0 => acc
+			case _ => go(m-1, ConsA(a,acc))
+		}
+		go(n,ConsA(a,NilA))
+	}
 	
 	def product(ds: ListA[Double]): Double = ds match {
 		case NilA => 1.0
@@ -72,6 +91,8 @@ object ListA {
 		}
 		
 	}
+
+
 
 	def reverse[A](l:ListA[A]) : ListA[A] = {
 		foldLeft(l,NilA:ListA[A])((b,a) => ConsA(a,b))
